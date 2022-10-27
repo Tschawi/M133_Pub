@@ -26,7 +26,7 @@ function updateToDoListOnScreen() {
 
 document.addEventListener('DOMContentLoaded', (event) => {
   updateToDoListOnScreen();
-
+  document.getElementById("aufraeumen").addEventListener("click", aufrauemen())
   const neuesToDoElement = document.getElementById('neuesToDo');
   neuesToDoElement.addEventListener('keydown', (event) => {
     if (event.code === 'Enter') {
@@ -45,3 +45,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
   });
 });
+
+function aufrauemen(){
+  todos.forEach(todo => {
+    if(todo.erledigt == 1){
+      todo.dispatchEvent(new Event('loeschen'));
+    }
+  });
+}
